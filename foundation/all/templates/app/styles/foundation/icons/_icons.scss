@@ -1,0 +1,82 @@
+// --- common for all Foundation fonts
+$iconClassPrefix: "foundicon-";
+
+/* global foundicon styles */
+[class*="#{$iconClassPrefix}"] {
+  display: inline;
+  width: auto;
+  height: auto;
+  line-height: inherit;
+  vertical-align: baseline;
+  background-image: none;
+  background-position: 0 0;
+  background-repeat: repeat;
+}
+[class*="#{$iconClassPrefix}"]:before {
+  font-weight: normal;
+  font-style: normal;
+  text-decoration: inherit;
+}
+
+@mixin i-class($name,$pua) {
+  .#{$iconClassPrefix}#{$name}:before { 
+    content: "\f#{$pua}";
+  }
+}
+
+@mixin ie-class($name,$pua) {
+  .#{$iconClassPrefix}#{$name} { 
+    *zoom: expression( this.runtimeStyle['zoom'] = "1", this.innerHTML = "&#xf#{$pua};"); 
+  }
+}
+
+@mixin face($typePrefix,$fontName,$fontFileName) {
+
+  @font-face { 
+    font-family: $fontName;
+    src: url('#{$fontFileName}.eot');
+    src: url('#{$fontFileName}.eot?#iefix') format('embedded-opentype'),
+         url('#{$fontFileName}.woff') format('woff'),
+         url('#{$fontFileName}.ttf') format('truetype'),
+         url('#{$fontFileName}.svg##{$fontName}') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @if ($typePrefix != "") {
+    [class*="#{$typePrefix} #{$iconClassPrefix}"]:before {  
+      font-family: $fontName;
+      font-weight: normal;
+      font-style: normal;
+    } 
+  }@else{
+    [class*="#{$iconClassPrefix}"]:before {
+      font-family: $fontName;
+      font-weight: normal;
+      font-style: normal;
+    }
+  }
+
+}
+
+@mixin ie-face($typePrefix,$fontName){
+  [class*="#{$typePrefix} #{$iconClassPrefix}"] {
+    font-family: $fontName;
+  }
+}
+
+// Usage: <i class="foundicon-star"></i>
+@import "general/_general_foundicons";
+@import "general/_general_foundicons_ie7";
+
+// Usage: <i class="enclosed foundicon-star"></i>
+@import "enclosed/_general_enclosed_foundicons";
+@import "enclosed/_general_enclosed_foundicons_ie7";
+
+// Usage: <i class="accessibility foundicon-wheelchair"></i>
+@import "accessibility/_accessibility_foundicons";
+@import "accessibility/_accessibility_foundicons_ie7";
+
+// Usage: <i class="social foundicon-twitter">
+@import "social/_social_foundicons";
+@import "social/_social_foundicons_ie7";
