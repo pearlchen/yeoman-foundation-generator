@@ -37,7 +37,7 @@ module.exports = function( grunt ) {
           images_dir: 'app/images',
           javascripts_dir: 'temp/scripts',
           config: 'app/config.rb',  // added this
-          force: true
+          //force: true //commented out due to conflicting app/temp folder image file paths
         }
       }
     },
