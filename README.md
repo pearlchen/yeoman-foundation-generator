@@ -7,3 +7,6 @@ Copy the 'foundation' folder to your yeoman generators folder for now. (e.g. [YO
 
 BUGS:
 - Icons sometimes don't render. I think it's a caching thing or something. Looking into it.
+
+Roadmap:
+- Reduce dependece on the Foundation for Compass Ruby gem. (Currently you need to have it installed in order to use this generator.)
